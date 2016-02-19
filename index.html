@@ -3,11 +3,23 @@
 <head>
   <title>30 seconds</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <style>body { margin: 0 }</style>
+  <style>body { margin: 0; background-color: black; }</style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery.tubular.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var videos = ['YxqoW0Rar1s'];
+    function shuffle(array) {
+      var counter = array.length;
+      while (counter > 0) {
+        var index = Math.floor(Math.random() * counter);
+        counter--;
+        var temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+      }
+      return array;
+    }
+
+    var videos = shuffle(['YxqoW0Rar1s', '5QSWNvCVfPQ', 'R35fL2oEQ6c', 'p7iLK-CpVQ8']);
 
     $('document').ready(function() {
       $('#wrapper').tubular({ videoId: '' });
