@@ -19,10 +19,12 @@
       return array;
     }
 
-    var videos = shuffle(['5QSWNvCVfPQ', 'R35fL2oEQ6c', 'p7iLK-CpVQ8', 'M7Wmv49GJxA', 'usUDrE1VdPk', 'AhVropq-6Zc', 'N7RQApjkl_Y', 'LExU5vUxb48', 'qVAYDmQBzrw', 'LFdDcILne6I', 'Ff_VZSZq6gs', 'rrwNn62CTbc', 'v51yES0REC8', 'BMr23OGzoeA', 'yzpU98w_Whk', 'esYJcbMIxpA', '23SPHouIWAE', 'tA3OI5MMnuc', 'Ijq-jk0Q_IY', 'H_aHMMWktL0', 'bAoKNiXVgO4']);
+    var videos = shuffle(['R35fL2oEQ6c', 'p7iLK-CpVQ8', 'M7Wmv49GJxA', 'usUDrE1VdPk', 'AhVropq-6Zc', 'N7RQApjkl_Y', 'LExU5vUxb48', 'qVAYDmQBzrw', 'LFdDcILne6I', 'Ff_VZSZq6gs', 'v51yES0REC8', 'BMr23OGzoeA', 'yzpU98w_Whk', 'esYJcbMIxpA', '23SPHouIWAE', 'tA3OI5MMnuc', 'Ijq-jk0Q_IY', 'CUexyJAXowE', 'RP0_T8FOEV8', 'NO60PXdm1wc', 'QanJrymPcW8', 'Tt3tWvTYCbg', 'rURrMStRJJc', 'meNu2KAzI-8', 'eUfKuVoYkSo', 'bvRvjJTrBe8', 'fH8uKFLtgTo', 'AmNoEeDC9UM', 'mYtleEC_5Oo', 'IzysmCMlRw0', 'Ik5rjy5WlTE', 'j15EVjYWRTM', 'WWQMOBAsBjg', 'efnPo8rNqJA']);
+
+    // Noisy: rrwNn62CTbc, H_aHMMWktL0, bAoKNiXVgO4, 5QSWNvCVfPQ
 
     $('document').ready(function() {
-      $('#wrapper').tubular({ videoId: '' });
+      $('#wrapper').tubular({ videoId: '', mute: false });
       var oldOnPlayerReady = window.onPlayerReady;
       window.onPlayerReady = function (e) {
         window.player.loadPlaylist(videos);
