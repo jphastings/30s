@@ -3,7 +3,39 @@
 <head>
   <title>30 seconds</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <style>body { margin: 0; background-color: black; }</style>
+  <style>
+  p, hgroup {
+    font-family: 'EB Garamond', 'Helvetica';
+  }
+  body { margin: 0; background-color: black; }
+  #welcome {
+    z-index: 100;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    color: #fff;
+    display:block;
+  }
+  #welcome hgroup {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    text-align: center;
+    display:block;
+    width:100%;
+  }
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 100;
+  }
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 100;
+  }
+  </style>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=EB+Garamond" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery.tubular.js"></script>
   <script type="text/javascript" charset="utf-8">
@@ -23,15 +55,33 @@
 
     $('document').ready(function() {
       $('#wrapper').tubular({ videoId: '', mute: false });
-      var oldOnPlayerReady = window.onPlayerReady;
-      window.onPlayerReady = function (e) {
+      var startVideo = window.onPlayerReady;
+
+      window.onPlayerStateChange = function (state) {
+        switch (state.data) {
+          case 0:
+            $('#welcome').fadeIn(500);
+            //window.player.loadPlaylist(videos);
+            break;
+          case 1:
+            $('#welcome').fadeOut(2000);
+            break;
+        }
+      }
+
+      window.onPlayerReady = function (ready) {
         window.player.loadPlaylist(videos);
-        oldOnPlayerReady(e);
+        startVideo(ready);
       }
     });
   </script>
 </head>
 <body>
+<div id="welcome">
+  <hgroup>
+    <h1><strong>thirty</strong> seconds</h1>
+  </hgroup>
+</div>
 <div id="wrapper" class="clearfix"></div>
 </body>
 </html>
